@@ -7,8 +7,8 @@
  *@Github: luzhixing12345
 */
 
-#ifndef TOOLS_FIRST_FOLLOW_SELECT_FFS_SET_H_
-#define TOOLS_FIRST_FOLLOW_SELECT_FFS_SET_H_
+#ifndef FIRST_FOLLOW_SELECT_FFS_SET_H_
+#define FIRST_FOLLOW_SELECT_FFS_SET_H_
 
 #include <string>
 #include <algorithm>
@@ -48,4 +48,4 @@ void calculateSelectSet(Set&first_set,
                         RuleSet &rule_set, 
                         SELECT_SET&select_set);
 
-#endif // TOOLS_FIRST_FOLLOW_SELECT_FFS_SET_H_
+#endif // FIRST_FOLLOW_SELECT_FFS_SET_H_

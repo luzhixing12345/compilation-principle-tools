@@ -7,8 +7,8 @@
  *@Github: luzhixing12345
 */
 
-#ifndef TOOLS_LL1_LL1_H_
-#define TOOLS_LL1_LL1_H_
+#ifndef LL1_LL1_H_
+#define LL1_LL1_H_
 
 
 # include "../FIRST-FOLLOW-SELECT/FFS_set.h"
@@ -34,4 +34,4 @@ bool showLL1analysisTable(RuleSet &rule_set, SELECT_SET &select_set, std::unorde
 
 
 
-#endif // TOOLS_LL1_LL1_H_
+#endif // LL1_LL1_H_

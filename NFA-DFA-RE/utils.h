@@ -7,8 +7,8 @@
  *@Github: luzhixing12345
 */
 
-#ifndef TOOLS_NFA_DFA_RE_UTILS_H_
-#define TOOLS_NFA_DFA_RE_UTILS_H_
+#ifndef NFA_DFA_RE_UTILS_H_
+#define NFA_DFA_RE_UTILS_H_
 #define DOT_FILE_NAME "grammar.dot"
 #define PNG_FILE_NAME "result.png"
 
@@ -39,4 +39,4 @@ int write_dot_file(const std::string &dot_file_name, const std::string &dot_file
 
 
 
-#endif // TOOLS_NFA_DFA_RE_UTILS_H_
+#endif // NFA_DFA_RE_UTILS_H_

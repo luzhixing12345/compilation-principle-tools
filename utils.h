@@ -7,8 +7,8 @@
  *@Github: luzhixing12345
 */
 
-#ifndef TOOLS_UTILS_H_
-#define TOOLS_UTILS_H_ 
+#ifndef UTILS_H_
+#define UTILS_H_ 
 
 #include <iostream>
 #include <vector>
@@ -88,4 +88,4 @@ static std::string stackToString(std::stack<char> stk) {
 }
 
 
-#endif  // TOOLS_UTILS_H_ 
+#endif  // UTILS_H_ 

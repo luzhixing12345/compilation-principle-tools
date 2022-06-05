@@ -14,7 +14,7 @@
 
 ### [求解LL1文法](LL1/README.md)
 
-### [求解LR0 SLR1文法](LR0/README.md) NOT FINISHED YET
+### [求解LR0-SLR1文法](LR0-SLR1/README.md) NOT FINISHED YET
 
 ## 可执行文件下载
 
