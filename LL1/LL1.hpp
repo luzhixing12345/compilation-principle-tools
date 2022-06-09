@@ -7,12 +7,11 @@
  *@Github: luzhixing12345
 */
 
-#ifndef LL1_LL1_H_
-#define LL1_LL1_H_
+#ifndef LL1_LL1_HPP_
+#define LL1_LL1_HPP_
 
-
-# include "../FIRST-FOLLOW-SELECT/FFS_set.h"
-# include "../utils.h"
+# include "../utils.hpp"
+# include "../FIRST-FOLLOW-SELECT/FFS_set.hpp"
 # define LL1_DEDUCTION std::vector<ACTION>
 
 struct ACTION
@@ -31,7 +30,15 @@ int LL1_analyasis(std::string &input_str,
 
 bool showLL1analysisTable(RuleSet &rule_set, SELECT_SET &select_set, std::unordered_map<std::string, Rule> &table_map);
 
+// pass by value instead of pointer to avoid recoverying stack
+static std::string stackToString(std::stack<char> stk) {
+    std::string str = "";
+    while (!stk.empty()) {
+        str.push_back(stk.top());
+        stk.pop();
+    }
+    return str;
+}
 
 
-
-#endif // LL1_LL1_H_
+#endif // LL1_LL1_HPP_

@@ -7,7 +7,7 @@
  *@Github: luzhixing12345
 */
 
-# include "RE.h"
+# include "RE.hpp"
 
 int RE_analyasis(const std::string &regular_expression, Graph &nfa_graph) {
 

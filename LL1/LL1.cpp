@@ -7,7 +7,7 @@
  *@Github: luzhixing12345
 */
 
-#include "LL1.h"
+#include "LL1.hpp"
 
 #define BLOCK std::vector<std::pair<bool,std::string>>
 

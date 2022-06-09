@@ -7,10 +7,10 @@
  *@Github: luzhixing12345
 */
 
-# include "utils.h"
-# include "DFA.h"
-# include "NFA.h"
-# include "RE.h"
+# include "utils.hpp"
+# include "DFA.hpp"
+# include "NFA.hpp"
+# include "RE.hpp"
 
 int main(int argc, char *argv[]) {
     

@@ -8,8 +8,8 @@
 */
 
 
-#ifndef LR0_SLR1_UTILS_H_
-#define LR0_SLR1_UTILS_H_
+#ifndef LR0_SLR1_UTILS_HPP_
+#define LR0_SLR1_UTILS_HPP_
 
 #include <iostream>
 #include <vector>
@@ -31,8 +31,10 @@ struct Closure {
     std::vector<std::pair<char,Closure*>> goto_table;
 };
 
+struct Graph {
+    std::string start_symbol = "START";
+    std::vector<Closure> closures;
+};
 
 
-
-
-#endif // LR0_SLR1_UTILS_H_
+#endif // LR0_SLR1_UTILS_HPP_

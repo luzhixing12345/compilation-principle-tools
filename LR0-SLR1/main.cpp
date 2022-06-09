@@ -7,9 +7,9 @@
  *@Github: luzhixing12345
 */
 
-#include "LR0.h"
-#include "SLR1.h"
-#include "../utils.h"
+#include "LR0.hpp"
+#include "SLR1.hpp"
+#include "../utils.hpp"
 
 
 

@@ -7,16 +7,16 @@
  *@Github: luzhixing12345
 */
 
-#ifndef LR0_SLR1_LR0_H_
-#define LR0_SLR1_LR0_H_
+#ifndef LR0_SLR1_LR0_HPP_
+#define LR0_SLR1_LR0_HPP_
 
-#include "utils.h"
-
-
+#include "utils.hpp"
 
 
 
 
 
 
-#endif // LR0_SLR1_LR0_H_
+
+
+#endif // LR0_SLR1_LR0_HPP_
