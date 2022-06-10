@@ -12,9 +12,9 @@
 
 int lr0(RuleSet &rule_set) {
 
-    Graph graph;
+    Graph graph = Graph();
     Item argument_item = augment(rule_set); // calculate the augmented item (S' -> S)
-    
+    graph.createNewClosure(argument_item); // create the first closure
 }
 
 Item augmentGrammar(RuleSet &rule_set) {

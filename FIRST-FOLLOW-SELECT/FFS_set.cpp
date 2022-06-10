@@ -61,7 +61,7 @@ void calculateFirstSet(RuleSet &rule_set, Set &first_set) {
         char key = rule.first;
         std::string production = rule.second;
         for (char &word : production) {
-            if (checkTerminal(word, rule_set.non_terminal_set)) {
+            if (isTerminal(word, rule_set.non_terminal_set)) {
                 first_set[key].insert(word);
                 break;
             } else {
@@ -89,10 +89,10 @@ void calculateFollowSet(Set &first_set, RuleSet &rule_set, Set &follow_set) {
         // then the word after A is the follow set of A
         for (int i = 0; i < production.size() ; i++) {
             char before = production[i];
-            if (!checkTerminal(before, rule_set.non_terminal_set)) {
+            if (!isTerminal(before, rule_set.non_terminal_set)) {
                 for (int j = i+1; j < production.size() ; j++) {
                     char after = production[j];
-                    if (checkTerminal(after, rule_set.non_terminal_set)) {
+                    if (isTerminal(after, rule_set.non_terminal_set)) {
                         follow_set[before].insert(after);
                         break;
                     } else {
@@ -112,7 +112,7 @@ void calculateFollowSet(Set &first_set, RuleSet &rule_set, Set &follow_set) {
         // then the follow set of the last word includes the follow set of the rule
         for (int i = production.size()-1; i >= 0; i--) {
             char end = production[i];
-            if (checkTerminal(end, rule_set.non_terminal_set)) {
+            if (isTerminal(end, rule_set.non_terminal_set)) {
                 break;
             } else {
                 for (auto &it : follow_set[key]) follow_set[end].insert(it);
@@ -141,7 +141,7 @@ void calculateSelectSet(Set &first_set,
             char key = rule.first;
             select_set.push_back(std::make_pair(rule, follow_set[key]));
         } else {
-            if (checkTerminal(first_word, rule_set.non_terminal_set)) {
+            if (isTerminal(first_word, rule_set.non_terminal_set)) {
                 std::set<char> temp;
                 temp.insert(first_word);
                 select_set.push_back(std::make_pair(rule, temp));

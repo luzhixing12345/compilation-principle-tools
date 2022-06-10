@@ -103,7 +103,7 @@ static void clearSpace(std::string &str) {
 }
 
 // check if the char c is a terminal word
-static bool checkTerminal(char c, std::vector<char>&non_terminal_set) {
+static bool isTerminal(char c, std::vector<char>&non_terminal_set) {
     for (char &s : non_terminal_set) {
         if (c == s) return false;
     }
@@ -160,7 +160,7 @@ static int getRuleSet(std::vector<std::string> &grammar_lines, RuleSet &rule_set
     // right side && not in left side to be in terminal_set
     for (auto &pair : rules) {
         for (char &c : pair.second) {
-            if (checkTerminal(c, non_terminal_set)) {
+            if (isTerminal(c, non_terminal_set)) {
                 terminal_set.push_back(c);
             }
         }
