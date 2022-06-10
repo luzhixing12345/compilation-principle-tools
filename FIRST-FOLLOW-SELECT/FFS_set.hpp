@@ -23,7 +23,7 @@ struct FFS_set {
 
 std::string ruleToString(Rule &rule);
 
-int ffs(std::vector<std::string> &grammar_lines, FFS_set &ffs_set);
+int ffs(std::vector<std::string> &grammar_lines, FFS_set &ffs_set, RuleSet &rule_set);
 
 void calculateFirstSet(RuleSet &rule_set, Set&first_set);
 

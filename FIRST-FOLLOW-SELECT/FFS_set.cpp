@@ -36,11 +36,10 @@ void showSet(std::vector<Rule>&rules, std::vector<char> &non_terminal_set, std::
     std::cout<< "}" << std::endl;
 }
 
-int ffs(std::vector<std::string> &grammar_lines, FFS_set &ffs_set) {
+int ffs(std::vector<std::string> &grammar_lines, FFS_set &ffs_set, RuleSet &rule_set) {
 
     BEGIN_SYMBOL = grammar_lines[0][0]; // by default, the first character in the first line is the begin symbol
 
-    RuleSet rule_set;
     getRuleSet(grammar_lines, rule_set);
 
     // calculate first set

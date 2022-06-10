@@ -34,4 +34,4 @@
 
 ## TODO: QT程序集成
 
-以上内容集成在了一个QT的程序中,关于这部分的代码见[branch-QT](https://github.com/luzhixing12345/compilation-principle-tools/tree/QT)
+以上内容集成在了一个QT的程序中,关于这部分的代码见[QT分支](https://github.com/luzhixing12345/compilation-principle-tools/tree/QT)

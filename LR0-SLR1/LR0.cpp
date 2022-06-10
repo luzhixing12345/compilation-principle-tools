@@ -10,4 +10,20 @@
 
 #include "LR0.hpp"
 
+int lr0(RuleSet &rule_set) {
 
+    Graph graph;
+    Item argument_item = augment(rule_set); // calculate the augmented item (S' -> S)
+    
+}
+
+Item augmentGrammar(RuleSet &rule_set) {
+
+    // by default, the first char in the first line of the grammar is BEGIN_SYMBOL
+    char BEGIN_SYMBOL = rule_set.rules[0].first;
+    Item item;
+    item.left = BEGIN_SYMBOL; // the left part of the augmented item should be {BEGIN_SYMBO'} but char is not a string
+    item.right = BEGIN_SYMBOL;
+    item.dot_pos = 0;
+    return item;
+}

@@ -54,7 +54,8 @@ int main(int argc, char *argv[]) {
         std::cout << "read file "<< argv[1] << " unsuccessfully";
         return 0;
     }
-    int signal = ffs(grammar_lines, ffs_set);
+    RuleSet rule_set;
+    int signal = ffs(grammar_lines, ffs_set, rule_set);
     
     signalCheck(signal, "ffs set");
     

@@ -19,8 +19,8 @@ int main(int argc, char *argv[]) {
         std::cout << "read file "<< argv[1] << " unsuccessfully";
         return 0;
     }
-    
-    int signal = ffs(grammar_lines, ffs_set);
+    RuleSet rule_set;
+    int signal = ffs(grammar_lines, ffs_set, rule_set);
 
     signalCheck(signal, "ffs set");
 
@@ -32,8 +32,6 @@ int main(int argc, char *argv[]) {
     char start_symbol = grammar_lines[0][0];
     // std::cin >> start_symbol;
     LL1_DEDUCTION ll1_deduction;
-    RuleSet rule_set;
-    getRuleSet(grammar_lines, rule_set);
     signal = LL1_analyasis(input_str, start_symbol, rule_set, ffs_set.select_set, ll1_deduction);
     signalCheck(signal, "LL1 analysis action");
     

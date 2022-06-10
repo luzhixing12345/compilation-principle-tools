@@ -10,7 +10,7 @@
 #include "LR0.hpp"
 #include "SLR1.hpp"
 #include "../utils.hpp"
-
+#include "../FIRST-FOLLOW-SELECT/FFS_set.hpp"
 
 
 
@@ -22,7 +22,18 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
+    FFS_set ffs_set;
+    RuleSet rule_set;
+    int signal = ffs(grammar_lines, ffs_set, rule_set);
+    signalCheck(signal, "ffs set");
 
+    // LR0 only needs rule_set
+    signal = lr0(rule_set);
+    signalCheck(signal, "lr0 set");
+
+    // SLR1 needs rule_set and ffs_set
+    signal = slr1(rule_set, ffs_set);
+    signalCheck(signal, "slr1 set");
 
     return 0;
 }

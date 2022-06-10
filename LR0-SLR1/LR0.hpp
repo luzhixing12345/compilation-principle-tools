@@ -12,11 +12,9 @@
 
 #include "utils.hpp"
 
+int lr0(RuleSet &rule_set);
 
-
-
-
-
+Item augment(RuleSet &rule_set);
 
 
 #endif // LR0_SLR1_LR0_HPP_
