@@ -16,17 +16,41 @@
 
 ## 实现的算法
 
-### [NFA-DFA-RE](NFA-DFA-RE/README.md) NOT FINISHED YET
+> 部分还未实现/有bug为改正的算法使用 `#` 标记
 
-### [求解FIRST集-FOLLOW集-SELECT集](FIRST-FOLLOW-SELECT/README.md)
+- [消除左递归/左公因子]() #
+- [NFA-DFA-RE](NFA-DFA-RE/README.md) #
+- [FIRST集-FOLLOW集-SELECT集](FIRST-FOLLOW-SELECT/README.md)
+- [LL1](LL1/README.md)
+- [LR0-SLR1](LR0-SLR1/README.md) #
+- [LR1]() #
+- [SSD]() #
 
-### [求解LL1文法](LL1/README.md)
+## 关于
 
-### [求解LR0-SLR1文法](LR0-SLR1/README.md) NOT FINISHED YET
+### 关于算法及其编译
+
+每一个文件夹是一个独立的算法,部分算法之间存在重叠,比如SLR1算法也需要计算first/follow集所以需要调用FIRST-FOLLOW-SELECT中的文件
+
+由于各部分算法关联性不大,所以并未统一编译为一个exe文件而是各文件夹内分别编译,编译方法见makefile文件(各部分README里也有提及)
+
+如果你不想手动编译也可以下载下方我编译过的可执行程序
+
+### 关于文件结构
+
+根目录下的`utils.hpp`是基本的方法和宏定义
+
+各文件夹内部也都是对应的模块,文件夹内部的`utils.hpp`为该算法的基本数据结构定义
+
+`grammar.txt`为一个测试文件,你可以替换其中的内容为题目的文法,文法的书写注意事项见对应部分的README
+
+具体算法也都是一个hpp头文件和一个cpp实现对应,一些位置也写了注释,如需阅读请自行理解
 
 ## 可执行文件下载
 
-|功能模块|exe|
+> 以下可执行程序使用 `gcc/x86_64-w64-mingw32/8.1.0` 编译,可以在windows平台执行
+
+|算法|exe|
 |:--:|:--:|
 |NFA-DFA-RE|[download]()|
 |FIRST集-FOLLOW集-SELECT集|[download](https://github.com/luzhixing12345/compilation-principle-tools/releases/download/v0.0.1/ffs.exe)|
@@ -36,7 +60,7 @@
 编写一个测试文件,然后运行. 关于测试文件的写法见对应部分的README
 
 ```bash
-{EXE_NAME} {TXT_NAME}
+{EXE_NAME} {FILE_NAME}
 # ffs grammar.txt
 ```
 
