@@ -4,9 +4,15 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/luzhixing12345/compilation-principle-tools)
 [![GitHub license](https://img.shields.io/github/license/luzhixing12345/compilation-principle-tools)](https://github.com/luzhixing12345/compilation-principle-tools/blob/main/LICENSE)
 
-本项目为编译原理的学习过程,作为大三下学期的一门专业课我并没有听懂老师讲课,所以打算自学.在学习过程中写的一些编译原理的算法
+## 前言
 
-## 功能
+虽然小镇做题家,但无论如何太理论的东西总是令人恼火的.鉴于算法并不是那么复杂,所以有了写一下这个想法
+
+- 如果你是想依靠这个工具完成作业,那么我建议三思
+- 如果你是想看一看代码怎么写的,那我非常欢迎.
+- 如果你是想对比学习一下/体验感受一下,那我非常欢迎. 我目前还没有测试出现什么问题,如果你发现了哪里的程序计算有问题,那估计是我写了bug,请留Issue,我会尽快修复.(如果你愿意提PR我也非常感谢)
+
+## 实现的算法
 
 ### [NFA-DFA-RE](NFA-DFA-RE/README.md) NOT FINISHED YET
 
