@@ -18,7 +18,6 @@
 
 > 部分还未实现/有bug未改正的算法使用 `#` 标记
 
-- [消除左递归/左公因子]() #
 - [NFA-DFA-RE](NFA-DFA-RE/README.md) #
 - [FIRST集-FOLLOW集-SELECT集](FIRST-FOLLOW-SELECT/README.md)
 - [LL1](LL1/README.md)
@@ -28,7 +27,11 @@
 
 ## 关于
 
-### 关于算法及其编译
+### 关于算法
+
+本仓库的代码实现是基于已掌握的编译原理知识进行实现的,如果对这部分尚不熟悉可以参考[我的博客](https://luzhixing12345.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/)
+
+### 关于编译
 
 每一个文件夹是一个独立的算法,部分算法之间存在重叠,比如SLR1算法也需要计算first/follow集所以需要调用FIRST-FOLLOW-SELECT中的文件
 
