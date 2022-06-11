@@ -53,12 +53,14 @@
 
 > 以下可执行程序使用 `gcc/x86_64-w64-mingw32/8.1.0` 编译,可以在windows平台执行
 
-|算法|exe|
+这部分写完之后一起传上来
+
+<!-- |算法|exe|
 |:--:|:--:|
 |NFA-DFA-RE|[download]()|
 |FIRST集-FOLLOW集-SELECT集|[download](https://github.com/luzhixing12345/compilation-principle-tools/releases/download/v0.0.1/ffs.exe)|
 |LL1|[download](https://github.com/luzhixing12345/compilation-principle-tools/releases/download/v0.0.1/ll1.exe)|
-|LR0|[download]()|
+|LR0|[download]()| -->
 
 编写一个测试文件,然后运行. 关于测试文件的写法见对应部分的README
 
