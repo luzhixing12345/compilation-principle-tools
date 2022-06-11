@@ -12,22 +12,27 @@
 #define BLOCK std::vector<std::pair<bool,std::string>>
 #define BLOCK_SET std::vector<BLOCK>
 
-int TABLE_SIZE = 0;
+int TABLE_SIZE = 15;
 
 void showLL1action(LL1_DEDUCTION &ll1_deduction);
 
-int LL1_analyasis(std::string &input_str,
-                  char start_symbol,
+int LL1_analyasis(char start_symbol,
                   RuleSet &rule_set,
                   SELECT_SET &select_set, 
                   LL1_DEDUCTION &ll1_deduction) {
     
-    std::unordered_map<std::string, Rule> table_map; // use string(terminal + non terminal word) as hashmap keys
+    // use string(terminal + non terminal word) as hashmap keys
+    // use std::vector<Rule> is because of the same key may have multiple rules (LL1 collision)
+    std::unordered_map<std::string, std::vector<Rule>> table_map; 
+
+
     bool collision = showLL1analysisTable(rule_set, select_set, table_map);
-    if (collision) {
-        std::cout << "There is collision in the select set." << std::endl;
-        return RUN_TIME_ERROR;
-    }
+
+    if (collision) std::cout << "\nThere is collision in the select set." << std::endl;
+
+    std::cout << std::endl << "Please input the string: ";
+    std::string input_str;
+    std::cin >> input_str;
 
     input_str += "$"; // add end character
     std::stack<char> stk;
@@ -35,29 +40,47 @@ int LL1_analyasis(std::string &input_str,
     stk.push(start_symbol);
 
     ACTION action;
+    int signal = SUCCESS;
     while (!stk.empty()) {
         action.residual_string = input_str;
         action.analysis_stack = stackToString(stk);
-        if (input_str.size() == 0) return INPUT_ERROR;
+        if (input_str.size() == 0) {
+            std::cout << "The string is empty." << std::endl;
+            signal = INPUT_ERROR;
+        }
         if (action.residual_string[0] == action.analysis_stack[0]) {
             input_str.erase(0,1);
             stk.pop();
-            action.analysis_action = std::make_pair(' ',"");
+            action.analysis_action = std::make_pair(' ',"MATCH");
         } else {
             std::string key = "" + input_str[0] + stk.top();
-            if (table_map.count(key) == 0) return INPUT_ERROR;
-            action.analysis_action = table_map[key];
-            stk.pop();
-            for (int i = action.analysis_action.second.size()-1; i >= 0; i--) {
-                if (action.analysis_action.second[i] == EMPTY) break;
-                stk.push(action.analysis_action.second[i]);
+            if (table_map.count(key) == 0) {
+                std::cout << "\nDetected char \"" << input_str[0] << "\" is not in the select set." << std::endl;
+                signal = INPUT_ERROR;
+            }
+            if (table_map[key].size() == 1) {
+                action.analysis_action = table_map[key][0];
+                stk.pop();
+                for (int i = action.analysis_action.second.size()-1; i >= 0; i--) {
+                    if (action.analysis_action.second[i] == EMPTY) break;
+                    stk.push(action.analysis_action.second[i]);
+                }
+            } else if (table_map[key].size() > 1) {
+                std::cout << "\nDetected LL1 collision." << std::endl;
+                std::cout << "\nThere are " << table_map[key].size() << " rules when " << input_str[0] << " meets " << stk.top() << std::endl;
+                for (int i = 0; i < table_map[key].size(); i++) {
+                    std::cout << table_map[key][i].first << " -> " << table_map[key][i].second << std::endl;
+                }
+                signal = RUN_TIME_ERROR;
             }
         }
+        //std::cout << action.residual_string << " " << action.analysis_stack << " " << action.analysis_action.first << " " << action.analysis_action.second << std::endl;
         ll1_deduction.push_back(action);
+        if (signal != SUCCESS) break;
     }
     std::cout << std::endl;
     showLL1action(ll1_deduction);
-    return SUCCESS;
+    return signal;
 }
 
 
@@ -94,7 +117,7 @@ void resetBlock(BLOCK &blocks) {
     }
 }
 
-bool showLL1analysisTable(RuleSet &rule_set, SELECT_SET &select_set, std::unordered_map<std::string, Rule> &table_map) {
+bool showLL1analysisTable(RuleSet &rule_set, SELECT_SET &select_set, std::unordered_map<std::string, std::vector<Rule>> &table_map) {
 
     // only calculate terminal set in select set instead of all terminals
     std::set<char> analysis_terminal_set;
@@ -141,7 +164,7 @@ bool showLL1analysisTable(RuleSet &rule_set, SELECT_SET &select_set, std::unorde
                         }
                         // add key and production to table_map
                         std::string key = "" + item + non_terminal_word;
-                        table_map[key] = it.first;
+                        table_map[key].push_back(it.first);
                         // self adaptation for table_size
                         TABLE_SIZE = std::max(TABLE_SIZE, int(blocks[id].second.size()) + TABLE_BIAS);
                     }

@@ -22,13 +22,12 @@ struct ACTION
 };
 
 
-int LL1_analyasis(std::string &input_str, 
-                  char start_symbol,
+int LL1_analyasis(char start_symbol,
                   RuleSet &rule_set,
                   SELECT_SET &select_set, 
                   LL1_DEDUCTION &ll1_deduction);
 
-bool showLL1analysisTable(RuleSet &rule_set, SELECT_SET &select_set, std::unordered_map<std::string, Rule> &table_map);
+bool showLL1analysisTable(RuleSet &rule_set, SELECT_SET &select_set, std::unordered_map<std::string, std::vector<Rule>> &table_map);
 
 // pass by value instead of pointer to avoid recoverying stack
 static std::string stackToString(std::stack<char> stk) {

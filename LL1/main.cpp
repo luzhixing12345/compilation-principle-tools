@@ -24,15 +24,11 @@ int main(int argc, char *argv[]) {
 
     signalCheck(signal, "ffs set");
 
-    std::cout << std::endl << "Please input the string: ";
-    std::string input_str;
-    std::cin >> input_str;
-
     // std::cout << std::endl << "Please input the start symbol: ";
     char start_symbol = grammar_lines[0][0];
     // std::cin >> start_symbol;
     LL1_DEDUCTION ll1_deduction;
-    signal = LL1_analyasis(input_str, start_symbol, rule_set, ffs_set.select_set, ll1_deduction);
+    signal = LL1_analyasis(start_symbol, rule_set, ffs_set.select_set, ll1_deduction);
     signalCheck(signal, "LL1 analysis action");
     
     return 0;

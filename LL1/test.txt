@@ -1,3 +1,2 @@
-D -> TL
-T -> a | b
-L -> c | d
+E -> *ET|aT
+T ->[E]T|e

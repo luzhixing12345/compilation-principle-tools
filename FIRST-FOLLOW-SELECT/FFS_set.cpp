@@ -13,7 +13,7 @@ char BEGIN_SYMBOL = 'S';
 
 std::string ruleToString(Rule &rule) {
     std::string rule_str = " -> " + rule.second;
-    if (rule.first == ' ') rule_str = " ";
+    if (rule.first == ' ') rule_str = rule.second;
     else rule_str = rule.first + rule_str;
     return rule_str;
 }
