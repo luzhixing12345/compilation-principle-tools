@@ -70,6 +70,13 @@ SUCCESS to calculate LL1 analysis action
 
 `grammar.txt`中需要写入当前的文法,一些细节可以参考求解first-follow-select集的[README](../FIRST-FOLLOW-SELECT/README.md)
 
-如果该文法LL1分析表存在冲突项,由于程序采用终端输出且单元格大小固定,可能会出现超出边框的错误样式.如需更改边框的大小可以修改[utils.hpp](../utils.hpp)中的`TABLE_SIZE`宏定义大小 (15 -> 25+),然后重编译即可
+自适应边框大小,无需担心过长的文法导致终端输出混乱
 
-> 这里有考虑过动态边框大小,就是把utils.hpp里写成extern然后在LL1里根据结果的长度调整大小,但是这样会有一个比较麻烦的事情就是你需要先把整个LL1分析表全部计算出来然后再根据 `blocks[id].second` 的最大值来调整 `TABLE_SIZE`,我现在的做法是算一行画一行,没有考虑那么多.如果想实现自适应调整就全部计算完保存起来然后再画就行了,这里没有考虑这么多所以就需要手动调整一下~
+如果分析表中存在冲突则会输出
+
+```txt
+There is collision in the select set.
+---------------------
+RUN_TIME_ERROR
+---------------------
+```
