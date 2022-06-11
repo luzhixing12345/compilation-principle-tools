@@ -10,6 +10,9 @@
 #include "LL1.hpp"
 
 #define BLOCK std::vector<std::pair<bool,std::string>>
+#define BLOCK_SET std::vector<BLOCK>
+
+int TABLE_SIZE = 0;
 
 void showLL1action(LL1_DEDUCTION &ll1_deduction);
 
@@ -103,8 +106,9 @@ bool showLL1analysisTable(RuleSet &rule_set, SELECT_SET &select_set, std::unorde
     int table_length = analysis_terminal_set.size() + 1;
     int table_width = rule_set.non_terminal_set.size() + 1;
     std::unordered_map<char, int> terminal_map;
-    drawLine(table_length);
+    
 
+    BLOCK_SET blocks_set(table_width);
     BLOCK blocks(table_length);
 
     bool collision = false;
@@ -138,12 +142,20 @@ bool showLL1analysisTable(RuleSet &rule_set, SELECT_SET &select_set, std::unorde
                         // add key and production to table_map
                         std::string key = "" + item + non_terminal_word;
                         table_map[key] = it.first;
+                        // self adaptation for table_size
+                        TABLE_SIZE = std::max(TABLE_SIZE, int(blocks[id].second.size()) + TABLE_BIAS);
                     }
                 }
             }
         }
-        drawBlock(blocks, table_length);
+        blocks_set[i] = blocks;
     }
+    // draw table
+    drawLine(table_length);
+    for (int i = 0; i < table_width; i++) {
+        drawBlock(blocks_set[i], table_length);
+    }
+
     return collision;
 }
 

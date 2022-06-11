@@ -25,7 +25,9 @@
 #define SUCCESS 0
 #define RUN_TIME_ERROR 1
 #define EMPTY 'e'
-#define TABLE_SIZE 15 // size of the table
+
+extern int TABLE_SIZE; // size of the table
+#define TABLE_BIAS 5 // the bais of the table
 
 
 

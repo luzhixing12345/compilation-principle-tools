@@ -5,8 +5,8 @@ DELETE = del
 
 default: main
 
-main: main.cpp LL1.cpp ../FIRST-FOLLOW-SELECT/FFS_set.cpp
-	$(CC) -o main main.cpp LL1.cpp ../FIRST-FOLLOW-SELECT/FFS_set.cpp -O3
+main: main.cpp LR0.cpp SLR1.cpp ../FIRST-FOLLOW-SELECT/FFS_set.cpp
+	$(CC) -o main main.cpp LR0.cpp SLR1.cpp ../FIRST-FOLLOW-SELECT/FFS_set.cpp -O3
 
 clean:
 	-$(DELETE) main.exe

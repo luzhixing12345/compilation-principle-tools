@@ -2,8 +2,6 @@
 
 LL1文法的求解过程并不复杂,基于[FIRST-FOLLOW-SELECT集求解](../FIRST-FOLLOW-SELECT/README.md)得到SELECT集
 
-再依次匹配分析栈就可以了,相关[博客](https://luzhixing12345.github.io/2022/04/28/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E4%B8%8B/)
-
 ## 编译
 
 ```bash
@@ -71,3 +69,7 @@ SUCCESS to calculate LL1 analysis action
 该过程显示了构造的LL1分析表和分析栈的推导过程.
 
 `grammar.txt`中需要写入当前的文法,一些细节可以参考求解first-follow-select集的[README](../FIRST-FOLLOW-SELECT/README.md)
+
+如果该文法LL1分析表存在冲突项,由于程序采用终端输出且单元格大小固定,可能会出现超出边框的错误样式.如需更改边框的大小可以修改[utils.hpp](../utils.hpp)中的`TABLE_SIZE`宏定义大小 (15 -> 25+),然后重编译即可
+
+> 这里有考虑过动态边框大小,就是把utils.hpp里写成extern然后在LL1里根据结果的长度调整大小,但是这样会有一个比较麻烦的事情就是你需要先把整个LL1分析表全部计算出来然后再根据 `blocks[id].second` 的最大值来调整 `TABLE_SIZE`,我现在的做法是算一行画一行,没有考虑那么多.如果想实现自适应调整就全部计算完保存起来然后再画就行了,这里没有考虑这么多所以就需要手动调整一下~

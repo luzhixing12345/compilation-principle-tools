@@ -32,8 +32,8 @@ int main(int argc, char *argv[]) {
     signalCheck(signal, "lr0 set");
 
     // SLR1 needs rule_set and ffs_set
-    signal = slr1(rule_set, ffs_set);
-    signalCheck(signal, "slr1 set");
+    //signal = slr1(rule_set, ffs_set);
+    //signalCheck(signal, "slr1 set");
 
     return 0;
 }

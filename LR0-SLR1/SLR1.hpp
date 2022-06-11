@@ -11,10 +11,9 @@
 #define LR0_SLR1_SLR1_HPP_
 
 #include "utils.hpp"
+#include "../FIRST-FOLLOW-SELECT/FFS_set.hpp"
 
 int slr1(RuleSet &rule_set, FFS_set &ffs_set);
-
-
 
 
 #endif // LR0_SLR1_SLR1_HPP_
