@@ -120,12 +120,10 @@ void resetBlock(BLOCK &blocks) {
 bool showLL1analysisTable(RuleSet &rule_set, SELECT_SET &select_set, std::unordered_map<std::string, std::vector<Rule>> &table_map) {
 
     // only calculate terminal set in select set instead of all terminals
-    std::set<char> analysis_terminal_set;
-    for (auto &it : select_set) {
-        for (auto &it2 : it.second) {
-            analysis_terminal_set.insert(it2);
-        }
-    }
+    std::vector<char> analysis_terminal_set = rule_set.terminal_set;
+    analysis_terminal_set.push_back('$');
+    analysis_terminal_set.erase(std::remove(analysis_terminal_set.begin(), analysis_terminal_set.end(), 'e'), analysis_terminal_set.end());
+
     int table_length = analysis_terminal_set.size() + 1;
     int table_width = rule_set.non_terminal_set.size() + 1;
     std::unordered_map<char, int> terminal_map;
