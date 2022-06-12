@@ -60,20 +60,30 @@ void calculateFirstSet(RuleSet &rule_set, Set &first_set) {
     for (Rule &rule : rule_set.rules) {
         char key = rule.first;
         std::string production = rule.second;
+        
         for (int i = 0; i < production.size(); i++) {
             char word = production[i];
+            bool exist_empty = false;
             if (isTerminal(word, rule_set.non_terminal_set)) {
                 first_set[key].insert(word);
                 break;
             } else {
-                for (auto &it : first_set[word]) first_set[key].insert(it);
+                for (auto &it : first_set[word]) {
+                    if (it != EMPTY) {
+                        first_set[key].insert(it);
+                    } else {
+                        exist_empty = true;
+                    }
+                }
                 // if EMPTY is not in the first set of word, then break
-                if (first_set[word].count(EMPTY) == 0) {
+                if (!exist_empty) {
                     break;
-                // if EMPTY is in the first set but word is not the last word in the production, then erase EMPTY
-                // if word is the last word in the production, do not erase EMPTY
-                } else if (i != production.size() - 1) {
-                    first_set[key].erase(EMPTY);
+                } else {
+                    // if EMPTY is in the first set of word, then continue
+                    // if word is the last word in the production, then add EMPTY to the first set of key
+                    if (i == production.size() - 1) {
+                        first_set[key].insert(EMPTY);
+                    }
                 }
             }
         }
