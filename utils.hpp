@@ -106,6 +106,8 @@ static void clearSpace(std::string &str) {
 
 // check if the char c is a terminal word
 static bool isTerminal(char c, std::vector<char>&non_terminal_set) {
+    // EMPTY is not a terminal word nor a non terminal word
+    // but can be used as a terminal word in the grammar after some logic operations
     for (char &s : non_terminal_set) {
         if (c == s) return false;
     }
