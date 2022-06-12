@@ -10,41 +10,6 @@
 # include "FFS_set.hpp"
 
 
-void showFFS(FFS_set &ffs_set) {
-
-    for (int i = 0; i <= 20 ; i++) std::cout << "-";
-    std::cout << std::endl;
-    std::cout << "FIRST SET: "<<std::endl;
-    for (auto &it : ffs_set.first_set) {
-        std::cout << it.first << ": ";
-        for (auto &i : it.second) {
-            std:: cout<< i << " ";
-        }
-        std::cout<<std::endl;
-    }
-    for (int i = 0; i <= 20 ; i++) std::cout << "-";
-    std::cout << std::endl;
-    std::cout << "FOLLOW SET: "<<std::endl;
-    for (auto &it : ffs_set.follow_set) {
-        std::cout << it.first << ": ";
-        for (auto &i : it.second) {
-            std:: cout<< i << " ";
-        }
-        std::cout<<std::endl;
-    }
-    for (int i = 0; i <= 20 ; i++) std::cout << "-";
-    std::cout << std::endl;
-    std::cout << "SELECT SET: "<<std::endl;
-    for (auto &it : ffs_set.select_set) {
-        std::string production = ruleToString(it.first);
-        std::cout << std::left << std::setw(10) << production << ": ";
-        for (auto &i : it.second) {
-            std:: cout<< i << " ";
-        }
-        std::cout<<std::endl;
-    }
-}
-
 int main(int argc, char *argv[]) {
 
     FFS_set ffs_set;

@@ -34,4 +34,10 @@ void calculateSelectSet(Set&first_set,
                         RuleSet &rule_set, 
                         SELECT_SET&select_set);
 
+void showFFS(FFS_set &ffs_set);
+
+void showFirstSet(Set &first_set);
+void showFollowSet(Set &follow_set);
+void showSelectSet(SELECT_SET &select_set);
+
 #endif // FIRST_FOLLOW_SELECT_FFS_SET_HPP_

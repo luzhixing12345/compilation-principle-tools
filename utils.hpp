@@ -27,6 +27,7 @@
 #define EMPTY 'e'
 
 extern int TABLE_SIZE; // size of the table
+extern bool SHOW_INFORMATION; // show information or not
 #define TABLE_BIAS 5 // the bais of the table
 
 

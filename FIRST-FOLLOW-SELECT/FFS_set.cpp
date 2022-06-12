@@ -129,10 +129,18 @@ void calculateFollowSet(Set &first_set, RuleSet &rule_set, Set &follow_set) {
         // then the follow set of the last word includes the follow set of the rule
         for (int i = production.size()-1; i >= 0; i--) {
             char end = production[i];
+            bool exist_empty = false;
             if (isTerminal(end, rule_set.non_terminal_set)) {
                 break;
             } else {
                 for (auto &it : follow_set[key]) follow_set[end].insert(it);
+                for (auto &it : first_set[end]) {
+                    if (it == EMPTY) {
+                        exist_empty = true;
+                        break;
+                    }
+                }
+                if (!exist_empty) break;
             }
         }
     }
@@ -169,3 +177,52 @@ void calculateSelectSet(Set &first_set,
     }
 }
 
+void showFFS(FFS_set &ffs_set) {
+    showFirstSet(ffs_set.first_set);
+    showFollowSet(ffs_set.follow_set);
+    showSelectSet(ffs_set.select_set);
+}
+
+void showFirstSet(Set &first_set) {
+
+    for (int i = 0; i <= 20 ; i++) std::cout << "-";
+    std::cout << std::endl;
+    std::cout << "FIRST SET: "<<std::endl;
+    for (auto &it :first_set) {
+        std::cout << it.first << ": ";
+        for (auto &i : it.second) {
+            std:: cout<< i << " ";
+        }
+        std::cout<<std::endl;
+    }
+}
+
+void showFollowSet(Set &follow_set) {
+
+    for (int i = 0; i <= 20 ; i++) std::cout << "-";
+    std::cout << std::endl;
+    std::cout << "FOLLOW SET: "<<std::endl;
+    for (auto &it : follow_set) {
+        std::cout << it.first << ": ";
+        for (auto &i : it.second) {
+            std:: cout<< i << " ";
+        }
+        std::cout<<std::endl;
+    }
+}
+
+void showSelectSet(SELECT_SET &select_set) {
+
+    for (int i = 0; i <= 20 ; i++) std::cout << "-";
+    std::cout << std::endl;
+    std::cout << "SELECT SET: "<<std::endl;
+    for (auto &it : select_set) {
+        std::string production = ruleToString(it.first);
+        std::cout << std::left << std::setw(10) << production << ": ";
+        for (auto &i : it.second) {
+            std:: cout<< i << " ";
+        }
+        std::cout<<std::endl;
+    }
+
+}
